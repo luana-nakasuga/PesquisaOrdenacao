@@ -7,5 +7,6 @@
  - Merge Sort
  - Quick Sort
 
-##Linguagem utilizada
+
+## Linguagem utilizada
 - Java
