@@ -1,26 +1,25 @@
 package algoritmosOrdenacao;
 
-import io.InOut;
-
+//Complexidade:
+//Melhor/Medio/Pior caso C(n)=0(n^2)
 public class SelectionSort {
-	public static void main(String[] args) {
-		
-		String menu = "1 - 100\n2 - 1000\n3 - 10000\n4 - 100000\n5 - 1000000\n6 - Sair.";
-		int opcao = 0;
 
-		do {
-			opcao = InOut.leInt(menu);
-
-			switch (opcao) {
-			case 1:
-				;
-				break;
-			case 2:
-				;
-				break;
-			case 3:
-				break;
+	public static long select(int[] vet, int tam) {
+		long tempoInicial = System.currentTimeMillis();
+		int i, n = 0, j, min, x;
+		for (i = 1; i <= n - 1; i++) {
+			min = i;
+			for (j = i + 1; j <= n; j++) {
+				if (vet[j] < vet[min])
+					min = j;
 			}
-		} while (opcao != 6);
+			x = vet[min];
+			vet[min] = vet[i];
+			vet[i] = x;
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+
 	}
+
 }
