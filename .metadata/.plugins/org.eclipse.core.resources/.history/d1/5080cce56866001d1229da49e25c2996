@@ -1,0 +1,30 @@
+package algoritmosOrdenacao;
+
+import io.InOut;
+
+public class BubbleSort {
+	String menuOrdem = "1 - Ordem aleatória.\n2 - Ordem crescente.\n3 - Ordem decrescente.\n4 - Sair.";
+	int opcao = 0;
+
+	do
+	{
+		opcao = InOut.leInt(menuOrdem);
+
+		switch (opcao) {
+		case 1:
+			aleatoria();
+			break;
+		case 2:
+			crescente();
+			break;
+		case 3:
+			decrescente();
+			break;
+		case 4:
+			break;
+		default:
+			InOut.msgDeErro("AVISO", "Opção inválida.");
+			break;
+		}
+	}while(opcao!=4);
+}}

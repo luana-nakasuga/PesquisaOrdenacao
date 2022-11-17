@@ -1,0 +1,75 @@
+package algoritmosOrdenacao;
+
+import io.InOut;
+
+//Complexidade:
+//Melhor/Medio/Pior caso C(n)=0(n^2)
+public class SelectionSort {
+	public void select(int vet[], int tam) {
+		int i, n, j, min, x;
+		for (i = 1; i <= n - 1; i++) {
+			min = i;
+			for (j = i + 1; j <= n; j++) {
+				if (vet[j] < vet[min])
+					min = j;
+			}
+			x = vet[min];
+			vet[min] = vet[i];
+			vet[i] = x;
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		String menu = "1 - 100\n2 - 1000\n3 - 10000\n4 - 100000\n5 - 1000000\n6 - Sair.";
+		int opcao = 0;
+
+		do {
+			opcao = InOut.leInt(menu);
+
+			switch (opcao) {
+			case 1:
+				testar100();
+				break;
+			case 2:
+				testar1000();
+				break;
+			case 3:
+				testar10000();
+				break;
+			case 4:
+				testar100000();
+				break;
+			case 5:
+				testar1000000();
+				break;
+			case 6:
+				break;
+			default:
+				InOut.msgDeErro("AVISO", "Opção inválida.");
+				break;
+			}
+		} while (opcao != 6);
+	}
+
+	private static void testar100() {
+
+	}
+
+	private static void testar1000() {
+
+	}
+
+	private static void testar10000() {
+
+	}
+
+	private static void testar100000() {
+
+	}
+
+	private static void testar1000000() {
+
+	}
+}

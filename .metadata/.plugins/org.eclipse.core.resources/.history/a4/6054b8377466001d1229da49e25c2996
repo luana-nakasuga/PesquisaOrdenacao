@@ -1,0 +1,143 @@
+package algoritmosOrdenacao;
+
+import io.InOut;
+
+public class Principal {
+	public static void main(String[] args) {
+		tamanho();
+		ordem();
+	}
+
+	public static void tamanho() {
+		String menuTamanho = "1 - 100\n2 - 1000\n3 - 10000\n4 - 100000\n5 - 1000000\n6 - Sair.";
+		int opcao = 0;
+
+		do {
+			opcao = InOut.leInt(menuTamanho);
+
+			switch (opcao) {
+			case 1:
+				testar100();
+				break;
+			case 2:
+				testar1000();
+				break;
+			case 3:
+				testar10000();
+				break;
+			case 4:
+				testar100000();
+				break;
+			case 5:
+				testar1000000();
+				break;
+			case 6:
+				break;
+			default:
+				InOut.msgDeErro("AVISO", "Opção inválida.");
+				break;
+			}
+		} while (opcao != 6);
+
+	}
+
+	private static void testar100() {
+
+	}
+
+	private static void testar1000() {
+
+	}
+
+	private static void testar10000() {
+
+	}
+
+	private static void testar100000() {
+
+	}
+
+	private static void testar1000000() {
+
+	}
+
+	public static void ordem() {
+
+		String menuOrdem = "1 - Ordem aleatória.\n2 - Ordem crescente.\n3 - Ordem decrescente.\n4 - Sair.";
+		int opcao = 0;
+
+		do {
+			opcao = InOut.leInt(menuOrdem);
+
+			switch (opcao) {
+			case 1:
+				int[] aleatorio = null;
+				for (int i = 0; i <= 1000000; i++) {
+					if (i <= 100) {
+						aleatorio[i] = 1 + (int) (Math.random() * 100);
+					}
+					if (i <= 1000) {
+						aleatorio[i] = 1 + (int) (Math.random() * 1000);
+					}
+					if (i <= 10000) {
+						aleatorio[i] = 1 + (int) (Math.random() * 10000);
+					}
+					if (i <= 100000) {
+						aleatorio[i] = 1 + (int) (Math.random() * 100000);
+					}
+					if (i <= 1000000) {
+						aleatorio[i] = 1 + (int) (Math.random() * 1000000);
+					}
+				}
+				break;
+			case 2:
+				int crescente[] = null;
+				for (int i = 0; i <= 1000000; i++) {
+					if (i < 100) {
+						crescente[i] = i;
+					}
+					if (i < 1000) {
+						crescente[i] = i;
+					}
+					if (i < 10000) {
+						crescente[i] = i;
+					}
+					if (i < 100000) {
+						crescente[i] = i;
+					}
+					if (i < 1000000) {
+						crescente[i] = i;
+					}
+				}
+				break;
+			case 3:
+				int aux3 = 1000001;
+				int decrescente[] = null;
+				for (int i = 0; i <= 1000000; i++) {
+					if (i < 100) {
+						decrescente[i] = aux3 - 1;
+					}
+					if (i < 1000) {
+						decrescente[i] = aux3 - 1;
+					}
+					if (i < 10000) {
+						decrescente[i] = aux3 - 1;
+					}
+					if (i < 100000) {
+						decrescente[i] = aux3 - 1;
+					}
+					if (i < 1000000) {
+						decrescente[i] = aux3 - 1;
+					}
+					aux3--;
+				}
+				break;
+			case 4:
+				break;
+			default:
+				InOut.msgDeErro("AVISO", "Opção inválida.");
+				break;
+			}
+		} while (opcao != 4);
+	}
+}
