@@ -4,15 +4,22 @@ import io.InOut;
 
 public class Principal {
 	public static void main(String[] args) {
-		InOut.msgDeInformacao("BUBBLE SORT", "Executado em " + "" + "ms.");
-		InOut.msgDeInformacao("INSERTION SORT", "Executado em " + "" + "ms.");
-		InOut.msgDeInformacao("MERGE SORT", "Executado em " + "" + "ms.");
-		InOut.msgDeInformacao("QUICK SORT", "Executado em " + "" + "ms.");
-		InOut.msgDeInformacao("SELECTION SORT", "Executado em " + "" + "ms.");
-		InOut.msgDeInformacao("SHELL SORT", "Executado em " + "" + "ms.");
+		BubbleSort bubbleSort = new BubbleSort();
+		InsertionSort insertionSort = new InsertionSort();
+		MergeSort mergeSort = new MergeSort();
+		QuickSort quickSort = new QuickSort();
+		SelectionSort selectionSort = new SelectionSort();
+		ShellSort shellSort = new ShellSort();
+		
+		InOut.msgDeInformacao("BUBBLE SORT", "Executado em " + bubbleSort + "ms.");
+		InOut.msgDeInformacao("INSERTION SORT", "Executado em " + insertionSort + "ms.");
+		InOut.msgDeInformacao("MERGE SORT", "Executado em " + mergeSort + "ms.");
+		InOut.msgDeInformacao("QUICK SORT", "Executado em " + quickSort + "ms.");
+		InOut.msgDeInformacao("SELECTION SORT", "Executado em " + selectionSort + "ms.");
+		InOut.msgDeInformacao("SHELL SORT", "Executado em " + shellSort + "ms.");
 	}
 
-	public static int tamanho() {
+	public int tamanho() {
 		String menuTamanho = "1 - 100\n2 - 1000\n3 - 10000\n4 - 100000\n5 - 1000000\n6 - Sair.";
 		int opcao = 0;
 
@@ -35,8 +42,6 @@ public class Principal {
 			case 5:
 				int[] vet1000000 = new int[1000000];
 				break;
-			case 6:
-				break;
 			default:
 				InOut.msgDeErro("AVISO", "Opção inválida.");
 				break;
@@ -46,7 +51,7 @@ public class Principal {
 
 	}
 
-	public static void ordem() {
+	public void ordem() {
 
 		String menuOrdem = "1 - Ordem aleatória.\n2 - Ordem crescente.\n3 - Ordem decrescente.\n4 - Sair.";
 		int opcao = 0;
@@ -80,8 +85,6 @@ public class Principal {
 					}
 					aux3--;
 				}
-				break;
-			case 4:
 				break;
 			default:
 				InOut.msgDeErro("AVISO", "Opção inválida.");
