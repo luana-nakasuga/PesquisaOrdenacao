@@ -1,0 +1,72 @@
+package algoritmosOrdenacao;
+
+import io.InOut;
+
+public class Principal {
+
+	private static int tamanho = 100;
+
+	public static void main(String[] args) {
+
+		int[] vetor = ordem();
+
+//		InOut.msgDeInformacao("BUBBLE SORT", "Executado em " + bubbleSort + "ms.");
+//		InOut.msgDeInformacao("INSERTION SORT", "Executado em " + insertionSort + "ms.");
+//		InOut.msgDeInformacao("MERGE SORT", "Executado em " + mergeSort + "ms.");
+//		InOut.msgDeInformacao("QUICK SORT", "Executado em " + quickSort + "ms.");
+//		InOut.msgDeInformacao("SELECTION SORT", "Executado em " + selectionSort + "ms.");
+//		InOut.msgDeInformacao("SHELL SORT", "Executado em " + shellSort + "ms.");
+	}
+
+	public static int[] ordem() {
+
+		String menuOrdem = "1 - Ordem aleatória.\n2 - Ordem crescente.\n3 - Ordem decrescente.\n4 - Sair.";
+		int opcao = 0;
+
+		do {
+			opcao = InOut.leInt(menuOrdem);
+
+			switch (opcao) {
+			case 1:
+				int[] aleatorio = null;
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						aleatorio[i] = (int) (1 + (Math.random() * tamanho));
+					}
+				}
+				return aleatorio;
+			case 2:
+				int[] crescente = null;
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						crescente[i] = i;
+					}
+				}
+				return crescente;
+			case 3:
+				int aux3 = tamanho + 1;
+				int[] decrescente = null;
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						decrescente[i] = aux3 - 1;
+					}
+					aux3--;
+				}
+				return decrescente;
+			default:
+				InOut.msgDeErro("AVISO", "Opção inválida.");
+				return null;
+			}
+		} while (opcao != 4);
+
+	}
+
+	public static void algoritmos() {
+		BubbleSort.bubble(null);
+		InsertionSort.insert(null, 0);
+		MergeSort.mergeSort(null, 0);
+		QuickSort.quick(null, 0, 0);
+		SelectionSort.select(null, 0);
+		ShellSort.shell(null, 0);
+	}
+}

@@ -1,0 +1,217 @@
+package algoritmosOrdenacao;
+
+import io.InOut;
+
+public class Principal {
+
+	private static int tamanho = 100;
+
+	public static void main(String[] args) {
+
+		int[] vetor = ordem();
+
+		algoritmos(vetor);
+
+	}
+
+	public static int[] ordem() {
+
+		String menuOrdem = "1 - Ordem aleatória.\n2 - Ordem crescente.\n3 - Ordem decrescente.\n4 - Sair.";
+		int opcao = 0;
+
+		do {
+			opcao = InOut.leInt(menuOrdem);
+
+			switch (opcao) {
+			case 1:
+				int[] aleatorio = new int[tamanho];
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						aleatorio[i] = (int) (1 + (Math.random() * tamanho));
+					}
+				}
+				return aleatorio;
+			case 2:
+				int[] crescente = new int[tamanho];
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						crescente[i] = i;
+					}
+				}
+				return crescente;
+			case 3:
+				int aux3 = tamanho + 1;
+				int[] decrescente = new int[tamanho];
+				for (int i = 0; i < tamanho; i++) {
+					if (i < tamanho) {
+						decrescente[i] = aux3 - 1;
+					}
+					aux3--;
+				}
+				return decrescente;
+			default:
+				InOut.msgDeErro("AVISO", "Opção inválida.");
+				return null;
+			}
+		} while (opcao != 4);
+
+	}
+
+	public static void algoritmos(int[] vetor) {
+		long tempoBubble = bubble(vetor);
+		long tempoInsertion = insertion(vetor);
+		long tempoMerge = merge(vetor, vetor.length);
+		long tempoQuick = quick(vetor, 0, vetor.length - 1);
+		long tempoSelection = select(vetor, vetor.length);
+		long tempoShell = shell(vetor, vetor.length);
+		
+		InOut.msgDeInformacao("BUBBLE SORT", "Executado em " + tempoBubble + "ms.");
+		InOut.msgDeInformacao("INSERTION SORT", "Executado em " + tempoInsertion + "ms.");
+		InOut.msgDeInformacao("MERGE SORT", "Executado em " + tempoMerge + "ms.");
+		InOut.msgDeInformacao("QUICK SORT", "Executado em " + tempoQuick + "ms.");
+		InOut.msgDeInformacao("SELECTION SORT", "Executado em " + tempoSelection + "ms.");
+		InOut.msgDeInformacao("SHELL SORT", "Executado em " + tempoShell + "ms.");
+	}
+
+	public static long bubble(int[] vet) {
+		long tempoInicial = System.currentTimeMillis();
+		boolean troca = true;
+		int aux;
+		while (troca) {
+			troca = false;
+			for (int i = 0; i < vet.length - 1; i++) {
+				if (vet[i] > vet[i + 1]) {
+					aux = vet[i];
+					vet[i] = vet[i + 1];
+					vet[i + 1] = aux;
+					troca = true;
+				}
+			}
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+	}
+	private static long insertion(int[] vetor) {
+		long tempoInicial = System.currentTimeMillis();
+		int j;
+		int i;
+		int key;
+
+		for (j = 1; j < vetor.length; j++) {
+			key = vetor[j];
+			for (i = j - 1; (i >= 0) && (vetor[i] > key); i--) {
+				vetor[i + 1] = vetor[i];
+			}
+			vetor[i + 1] = key;
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+	}
+
+	public static long merge(int[] a, int n) {
+		long tempoInicial = System.currentTimeMillis();
+		if (n < 2) {
+			return 0;
+		}
+		int mid = n / 2;
+		int[] l = new int[mid];
+		int[] r = new int[n - mid];
+
+		for (int i = 0; i < mid; i++) {
+			l[i] = a[i];
+		}
+		for (int i = mid; i < n; i++) {
+			r[i - mid] = a[i];
+		}
+		merge(l, mid);
+		merge(r, n - mid);
+
+		merge(a, l, r, mid, n - mid);
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+	}
+
+	public static void merge(int[] a, int[] l, int[] r, int left, int right) {
+
+		int i = 0, j = 0, k = 0;
+		while (i < left && j < right) {
+			if (l[i] <= r[j]) {
+				a[k++] = l[i++];
+			} else {
+				a[k++] = r[j++];
+			}
+		}
+		while (i < left) {
+			a[k++] = l[i++];
+		}
+		while (j < right) {
+			a[k++] = r[j++];
+		}
+	}
+
+	public static long quick(int[] vet, int esq, int dir) {
+		long tempoInicial = System.currentTimeMillis();
+		int pivo = esq, i, ch, j;
+		for (i = esq + 1; i <= dir; i++) {
+			j = i;
+			if (vet[j] < vet[pivo]) {
+				ch = vet[j];
+				while (j > pivo) {
+					vet[j] = vet[j - 1];
+					j--;
+				}
+				vet[j] = ch;
+				pivo++;
+			}
+		}
+		if (pivo - 1 >= esq) {
+			quick(vet, esq, pivo - 1);
+		}
+		if (pivo + 1 <= dir) {
+			quick(vet, pivo + 1, dir);
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+	}
+
+	public static long select(int[] vet, int tam) {
+		long tempoInicial = System.currentTimeMillis();
+		int i, n = 0, j, min, x;
+		for (i = 1; i <= n - 1; i++) {
+			min = i;
+			for (j = i + 1; j <= n; j++) {
+				if (vet[j] < vet[min])
+					min = j;
+			}
+			x = vet[min];
+			vet[min] = vet[i];
+			vet[i] = x;
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+
+	}
+
+	public static long shell(int[] vet, int tam) {
+		long tempoInicial = System.currentTimeMillis();
+		int i, j, value;
+		int gap = 1;
+		while (gap < tam) {
+			gap = 3 * gap + 1;
+		}
+		while (gap > 1) {
+			gap /= 3;
+			for (i = gap; i < tam; i++) {
+				value = vet[i];
+				j = i - gap;
+				while (j >= 0 && value < vet[j]) {
+					vet[j + gap] = vet[j];
+					j -= gap;
+				}
+				vet[j + gap] = value;
+			}
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+		return tempo;
+	}
+}
