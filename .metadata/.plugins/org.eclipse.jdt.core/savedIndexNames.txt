@@ -1,3 +1,4 @@
 INDEX VERSION 1.131+C:\Users\luana\OneDrive\Documents\GitHub\PesquisaOrdenacao\.metadata\.plugins\org.eclipse.jdt.core
+2484480890.index
 3140380791.index
 1865797976.index
