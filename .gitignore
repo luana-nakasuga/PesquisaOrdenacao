@@ -29,3 +29,5 @@ replay_pid*
 /*.project
 /.settings
 bin/
+sortingAlgorithmsProject/.classpath
+sortingAlgorithmsProject/.project
