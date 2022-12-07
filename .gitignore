@@ -1,3 +1,14 @@
 
 .metadata/.log
 *.properties
+*.xml
+*.png
+*.history
+*.index
+*.snap
+*.prefs
+*.tree
+*.xmi
+*.resources
+*.prefs
+*.ini
