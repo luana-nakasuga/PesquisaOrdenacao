@@ -1,0 +1,24 @@
+package algoritmosOrdenacao;
+
+//Complexidade:
+//Melhor caso C(n)=0(n)
+//Medio/Pior caso C(n)=0(n^2)
+public class InsertionSort {
+	public static long insert(int[] vet, int tam) {
+		long tempoInicial = System.currentTimeMillis();
+		int i, j, x;
+		for (i = 2; i <= tam; i++) {
+			x = vet[i];
+			j = i - 1;
+			vet[0] = x;
+			while (x < vet[j]) {
+				vet[j + 1] = vet[j];
+				j--;
+			}
+			vet[j + 1] = x;
+		}
+		long tempo = System.currentTimeMillis() - tempoInicial;
+
+		return tempo;
+	}
+}
